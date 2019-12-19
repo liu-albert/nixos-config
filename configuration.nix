@@ -54,10 +54,21 @@
   environment.systemPackages = with pkgs; [
     wget vim neofetch unzip tmux
     vscode git dmenu 
+    python python3
     google-chrome firefox
     powertop
     mpv qbittorrent
     undervolt
+  ];
+
+  # Fonts
+  fonts.fonts = with pkgs; [
+    fira-code
+    fira-code-symbols
+    noto-fonts
+    noto-fonts-cjk
+    liberation_ttf
+    hack-font
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -155,5 +166,9 @@
 
   # Allow Unfree Packages
   nixpkgs.config.allowUnfree = true;
+
+  # virtualization
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "blerpu" ];
 }
 
